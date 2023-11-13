@@ -548,7 +548,4 @@ main_app.bind("<Alt-x>",delto)
 main_app.bind("<Control-t>",hide_toolbar)
 main_app.bind("<Control-h>",hide_statusbar)
 
-
-
-
 main_app.mainloop()
