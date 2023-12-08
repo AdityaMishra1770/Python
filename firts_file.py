@@ -1,7 +1,48 @@
+#Replace all ______ with rjust, ljust or center. 
+
+thickness = int(input()) #This must be an odd number
+c = 'H'
+
+#Top Cone
+for i in range(thickness):
+    print((c*i).rjust(thickness-1)+c+(c*i).ljust(thickness-1))
+
+#Top Pillars
+for i in range(thickness+1):
+    print((c*thickness).center(thickness*2)+(c*thickness).center(thickness*6))
+
+#Middle Belt
+for i in range((thickness+1)//2):
+    print((c*thickness*5).center(thickness*6))    
+
+#Bottom Pillars
+for i in range(thickness+1):
+    print((c*thickness).center(thickness*2)+(c*thickness).center(thickness*6))    
+
+#Bottom Cone
+for i in range(thickness):
+    print(((c*(thickness-i-1)).rjust(thickness)+c+(c*(thickness-i-1)).ljust(thickness)).rjust(thickness*6))
+
+
+
+
+
+
+
+
+a = 0; b = 1
+for _ in range(int(input())):
+    print(a,end = " ")
+    a+=b
+    b = a- b
+
+
+
+
 import textwrap
 
 def wrap(string, max_width):
-    first = 0 
+    first = 0
     mid = max_width
     last = mid+max_width
     old  = string[first:mid]+"\n"+string[mid:last]
