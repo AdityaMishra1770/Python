@@ -120,7 +120,6 @@ while running:
             if event.key == pygame.K_DOWN:
                 playerY_change = +0.25
             if event.key == pygame.K_SPACE:
-                print("Stroked space")
                 if Fire_state == "ready":
                     fireX = playerX
                     fireball_fire(fireX,firey)
@@ -186,18 +185,14 @@ while running:
         Fire_state = "ready"
 
     if isCollision(FireRect, blueBirdRect):  
-        print("Collision")
-        print("Fire ball = ",FireRect,"\nBlue = ",blueRect)
         firey = playerY
         Fire_state = "ready"
         score += 1
-        print(score)
         BlueX = random.randint(0,682)
         BlueY = random.randint(0,200)
 
     if isCollision(blueRect, playerRect):
         life -= 1
-        print(life)
         blueballX = BlueX
         blueballY = BlueY
     
