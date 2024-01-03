@@ -49,6 +49,15 @@ BackgroundImg = pygame.image.load("C:\\Users\\Aditya Mishra\\Downloads\\_9c9e3ce
 heart_image = pygame.image.load("D:\\download\\heart-removebg-preview.png")
 heart_image = pygame.transform.scale(heart_image,(50,60))
 
+#starting image
+startImg = pygame.image.load("D:\\download\\start1.jpg")
+startImg = pygame.transform.scale(startImg,(750,499))
+overlay = pygame.Surface((startImg.get_width(), startImg.get_height()))
+overlay.set_alpha(40)
+overlay.fill((0,0,0))
+startImg.blit(overlay, (0,0))
+
+
 
 # transforming image size
 playerImg = pygame.transform.scale(playerImg,(75,100))
@@ -64,6 +73,7 @@ blueRect = blueballImg.get_rect()
 
 # Creating font for image
 font = pygame.font.SysFont(None, 36)
+font2 = pygame.font.SysFont(None, 80)
 
 
 
@@ -71,6 +81,7 @@ font = pygame.font.SysFont(None, 36)
 score = 0
 life = 3
 time = 0
+clock = pygame.time.Clock()
 
 # Image adding in screen
 def player(img,x,y):
@@ -93,7 +104,29 @@ def isCollision(FireRect, blueBirdRect):
 
 
 # Game loop
-running = True
+running = False
+dot_counter = 0
+
+while not running:
+    screen.fill((120,140,230))
+    screen.blit(startImg,(0,0))
+    start = font2.render("To Start Press Enter", True, (255,215,0))
+    start_rect = start.get_rect()
+    start_rect.center = (screen.get_width()//2, screen.get_height()//2 + 150)
+    screen.blit(start, start_rect)
+    dot = font.render(". "*dot_counter,True, (255, 215, 0))
+    screen.blit(dot, ((screen.get_width()//2 +260), screen.get_height()//2 + 148))
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            sys.exit()
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_RETURN:
+                running = True
+    pygame.display.update()
+    dot_counter = (dot_counter + 1) % 7  # Cycle dot_counter between 0 and 3
+    pygame.time.wait(250)
+
 while running:
         # RGB format
     screen.fill((0,0,0))
@@ -148,12 +181,10 @@ while running:
         BlueX = 682
         Blue_changeX = -0.28
         BlueY += Blue_changeY
-
     if BlueX <= 1 :
         BlueX = 1
         Blue_changeX = +0.28
         BlueY += Blue_changeY
-
     if BlueY <= 1 :
         BlueY = 1
     if BlueY>=150 :
@@ -212,25 +243,21 @@ while running:
     # Update everything
     pygame.display.update()
 
-font2 = pygame.font.SysFont(None, 80)
 
-while (running == False and time<= 100050):
+while (running == False and time<= 9050):
     time += 1
     screen.fill((255, 218, 185))
     text = "GAME"
-    if(score >= 10):
+    if(score >= 24):
         text = "GAME WON"
     else:
         text = "GAME OVER"
-
     success = font2.render(text,True, (65, 105, 225))
     success_rect = success.get_rect()
     success_rect.center = (screen.get_width()//2, screen.get_height()//2)
     screen.blit(success, success_rect)
-
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
-
     pygame.display.update()
