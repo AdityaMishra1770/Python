@@ -1,0 +1,9 @@
+See_through_register,Latent_image,Denominational_numeral_Devnagari,Portrait_of_Gandhi,label
+1,1,1,1,genuine
+0,1,0,1,counterfeit
+1,0,1,1,genuine
+0,0,0,0,counterfeit
+1,1,0,1,genuine
+0,1,1,0,counterfeit
+1,0,0,1,genuine
+0,1,1,1,counterfeit

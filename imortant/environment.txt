@@ -1,0 +1,3 @@
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+& "c:/Users/Aditya Mishra/Workspace/.venv/Scripts/Activate.ps1"
+ :to activate 3.10(just copy from the front of : till above)
